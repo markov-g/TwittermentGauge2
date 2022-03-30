@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aVj-Uy-n3h">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Twitter Sentiment Gauge-->
+        <scene sceneID="5eC-3A-3fI">
+            <objects>
+                <viewController id="gJu-1w-wsk" customClass="ViewController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a7b-3t-cqJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jwa-r8-Fd9">
+                                <rect key="frame" x="0.0" y="46" width="375" height="621"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="MLc-Nf-Ipl">
+                                        <rect key="frame" x="0.0" y="48" width="375" height="573"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ep9-2h-KsB">
+                                                <rect key="frame" x="133.5" y="0.0" width="108" height="275"/>
+                                                <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="117-AY-2rE">
+                                                <rect key="frame" x="142" y="330" width="91.5" height="33"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="33" id="FRs-kH-jLe"/>
+                                                </constraints>
+                                                <buttonConfiguration key="configuration" style="gray" title="Explain"/>
+                                                <connections>
+                                                    <segue destination="KgO-Ov-gO5" kind="presentation" identifier="predictions" modalPresentationStyle="fullScreen" id="l71-9T-kMj"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How do people feel about..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HP9-ee-vOF">
+                                                <rect key="frame" x="0.0" y="418" width="375" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="6wm-BH-uBw"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rge-zl-NGZ">
+                                                <rect key="frame" x="137.5" y="523" width="100" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="lv1-5K-4W0"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="Predict!">
+                                                    <color key="titleColor" red="0.15686274510000001" green="0.66666666669999997" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="predictPressed:" destination="gJu-1w-wsk" eventType="touchUpInside" id="uRJ-Qv-1Rf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="HP9-ee-vOF" secondAttribute="trailing" id="3pU-j7-3tl"/>
+                                            <constraint firstItem="HP9-ee-vOF" firstAttribute="top" secondItem="117-AY-2rE" secondAttribute="bottom" constant="55" id="71k-4L-0JK"/>
+                                            <constraint firstItem="117-AY-2rE" firstAttribute="top" secondItem="Ep9-2h-KsB" secondAttribute="bottom" constant="55" id="Lko-4M-37X"/>
+                                            <constraint firstItem="117-AY-2rE" firstAttribute="centerX" secondItem="MLc-Nf-Ipl" secondAttribute="centerX" id="bkV-XT-edO"/>
+                                            <constraint firstItem="HP9-ee-vOF" firstAttribute="leading" secondItem="MLc-Nf-Ipl" secondAttribute="leading" id="qvY-ig-uVS"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.45085787770000002" green="0.98829740290000001" blue="0.83763033149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="MLc-Nf-Ipl" firstAttribute="top" secondItem="jwa-r8-Fd9" secondAttribute="top" constant="48" id="0zn-oV-LK2"/>
+                                    <constraint firstAttribute="bottom" secondItem="MLc-Nf-Ipl" secondAttribute="bottom" id="L9S-7h-rMr"/>
+                                    <constraint firstItem="MLc-Nf-Ipl" firstAttribute="leading" secondItem="jwa-r8-Fd9" secondAttribute="leading" id="P1B-65-SvE"/>
+                                    <constraint firstAttribute="trailing" secondItem="MLc-Nf-Ipl" secondAttribute="trailing" id="nXs-gW-13G"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Cel-SL-yWb"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="jwa-r8-Fd9" firstAttribute="leading" secondItem="Cel-SL-yWb" secondAttribute="leading" id="Xh1-ph-0nL"/>
+                            <constraint firstItem="jwa-r8-Fd9" firstAttribute="trailing" secondItem="Cel-SL-yWb" secondAttribute="trailing" id="a1L-0a-HgM"/>
+                            <constraint firstItem="jwa-r8-Fd9" firstAttribute="bottom" secondItem="Cel-SL-yWb" secondAttribute="bottom" id="htS-27-SyT"/>
+                            <constraint firstItem="jwa-r8-Fd9" firstAttribute="top" secondItem="a7b-3t-cqJ" secondAttribute="top" constant="46" id="iZh-hN-vbU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Twitter Sentiment Gauge" leftItemsSupplementBackButton="YES" id="I0U-sh-TFB">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="I0l-tg-NeG"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backgroundView" destination="jwa-r8-Fd9" id="5UJ-WU-hbt"/>
+                        <outlet property="sentimentLabel" destination="Ep9-2h-KsB" id="RGg-ER-dLz"/>
+                        <outlet property="textField" destination="HP9-ee-vOF" id="eKD-X0-T0H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z31-Pp-XLb" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+        </scene>
+        <!--Detail Table View Controller-->
+        <scene sceneID="BVp-Bg-iHX">
+            <objects>
+                <tableViewController id="KgO-Ov-gO5" customClass="DetailTableViewController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ggi-mw-tdN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <navigationBar key="tableFooterView" contentMode="scaleToFill" id="ip4-Lo-hn1">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Prediction Details" id="79N-Mv-B0G">
+                                    <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="l4g-jJ-5hc">
+                                        <connections>
+                                            <segue destination="gJu-1w-wsk" kind="presentation" identifier="backToMain" modalPresentationStyle="fullScreen" id="2Jn-SK-0fY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <connections>
+                            <outlet property="dataSource" destination="KgO-Ov-gO5" id="r81-7P-D4S"/>
+                            <outlet property="delegate" destination="KgO-Ov-gO5" id="9Ng-8a-3oQ"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="4iB-Vi-X3d" kind="presentation" identifier="predictionDetail" modalPresentationStyle="fullScreen" id="IKE-Yr-NrM"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4al-gH-Z8i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2248.8000000000002" y="150.67466266866569"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QN8-g9-oaC">
+            <objects>
+                <viewController id="4iB-Vi-X3d" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sA9-Y9-6J2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uQu-vp-UCH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Modify Prediction" id="IQl-EE-hR3">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="eqH-GF-PcO">
+                                            <connections>
+                                                <segue destination="KgO-Ov-gO5" kind="presentation" identifier="backToPredictions" modalPresentationStyle="fullScreen" id="Wxx-8W-V2k"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BkG-Z9-QYm"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PWh-xS-nFj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uLM-aM-Yl7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0IC-xb-JeZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3151.1999999999998" y="151.57421289355324"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zOY-4x-4pQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aVj-Uy-n3h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="j8i-Gp-vD8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gJu-1w-wsk" kind="relationship" relationship="rootViewController" id="nse-1c-Xy8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pQX-0M-dVA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Wxx-8W-V2k"/>
+        <segue reference="2Jn-SK-0fY"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
