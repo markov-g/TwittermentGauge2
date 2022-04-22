@@ -37,7 +37,7 @@
                                                 </constraints>
                                                 <buttonConfiguration key="configuration" style="gray" title="Explain"/>
                                                 <connections>
-                                                    <segue destination="KgO-Ov-gO5" kind="presentation" identifier="predictions" modalPresentationStyle="fullScreen" id="l71-9T-kMj"/>
+                                                    <segue destination="CPB-uj-mIW" kind="presentation" identifier="predictions" modalPresentationStyle="fullScreen" id="l71-9T-kMj"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How do people feel about..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HP9-ee-vOF">
@@ -102,7 +102,7 @@
             </objects>
             <point key="canvasLocation" x="1076" y="133.5832083958021"/>
         </scene>
-        <!--Detail Table View Controller-->
+        <!--Prediction Details-->
         <scene sceneID="BVp-Bg-iHX">
             <objects>
                 <tableViewController id="KgO-Ov-gO5" customClass="DetailTableViewController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
@@ -110,63 +110,134 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <navigationBar key="tableFooterView" contentMode="scaleToFill" id="ip4-Lo-hn1">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Prediction Details" id="79N-Mv-B0G">
-                                    <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="l4g-jJ-5hc">
-                                        <connections>
-                                            <segue destination="gJu-1w-wsk" kind="presentation" identifier="backToMain" modalPresentationStyle="fullScreen" id="2Jn-SK-0fY"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="KgO-Ov-gO5" id="r81-7P-D4S"/>
                             <outlet property="delegate" destination="KgO-Ov-gO5" id="9Ng-8a-3oQ"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Prediction Details" id="uVX-WY-Q6y">
+                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="l4g-jJ-5hc">
+                            <connections>
+                                <segue destination="gJu-1w-wsk" kind="presentation" identifier="backToMain" modalPresentationStyle="fullScreen" id="2Jn-SK-0fY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="tweetDetailTableView" destination="ggi-mw-tdN" id="3PL-eB-xEo"/>
                         <segue destination="4iB-Vi-X3d" kind="presentation" identifier="predictionDetail" modalPresentationStyle="fullScreen" id="IKE-Yr-NrM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4al-gH-Z8i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2248.8000000000002" y="150.67466266866569"/>
+            <point key="canvasLocation" x="3188" y="150.67466266866569"/>
         </scene>
-        <!--View Controller-->
+        <!--Modify Prediction Controller-->
         <scene sceneID="QN8-g9-oaC">
             <objects>
-                <viewController id="4iB-Vi-X3d" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModifyPredictionVC" id="4iB-Vi-X3d" customClass="ModifyPredictionController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sA9-Y9-6J2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uQu-vp-UCH">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQu-vp-UCH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Modify Prediction" id="IQl-EE-hR3">
                                         <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="eqH-GF-PcO">
                                             <connections>
-                                                <segue destination="KgO-Ov-gO5" kind="presentation" identifier="backToPredictions" modalPresentationStyle="fullScreen" id="Wxx-8W-V2k"/>
+                                                <segue destination="CPB-uj-mIW" kind="presentation" identifier="backToPredictions" modalPresentationStyle="fullScreen" id="Wxx-8W-V2k"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="BkG-Z9-QYm"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4Q-GU-1cS">
+                                <rect key="frame" x="16" y="636" width="76" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="POS (+)"/>
+                                <connections>
+                                    <action selector="pos:" destination="4iB-Vi-X3d" eventType="touchUpInside" id="bFO-6i-UO8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsx-XL-M08">
+                                <rect key="frame" x="132" y="636" width="111" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="NEUTRAL (=)"/>
+                                <connections>
+                                    <action selector="neutral:" destination="4iB-Vi-X3d" eventType="touchUpInside" id="DjW-2P-3gT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNa-87-a6G">
+                                <rect key="frame" x="283" y="636" width="73.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="NEG (-)"/>
+                                <connections>
+                                    <action selector="neg:" destination="4iB-Vi-X3d" eventType="touchUpInside" id="71p-0K-Rpu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYd-84-BLA">
+                                <rect key="frame" x="16" y="556" width="343" height="47"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="CHANGE SENTIMENT" buttonSize="large"/>
+                                <connections>
+                                    <action selector="change:" destination="4iB-Vi-X3d" eventType="touchUpInside" id="Icf-z2-q0X"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tweet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sg-Rg-LCl">
+                                <rect key="frame" x="16" y="69" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siy-6E-vzU">
+                                <rect key="frame" x="16" y="323.5" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PWh-xS-nFj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qsx-XL-M08" firstAttribute="leading" secondItem="H4Q-GU-1cS" secondAttribute="trailing" constant="40" id="6MO-Jn-TsJ"/>
+                            <constraint firstItem="siy-6E-vzU" firstAttribute="centerX" secondItem="sA9-Y9-6J2" secondAttribute="centerX" id="7EH-rF-NE4"/>
+                            <constraint firstItem="qsx-XL-M08" firstAttribute="top" secondItem="GYd-84-BLA" secondAttribute="bottom" constant="33" id="9rk-sE-Dsr"/>
+                            <constraint firstItem="qsx-XL-M08" firstAttribute="centerX" secondItem="2sg-Rg-LCl" secondAttribute="centerX" id="A5B-LL-4Y0"/>
+                            <constraint firstItem="YNa-87-a6G" firstAttribute="top" secondItem="GYd-84-BLA" secondAttribute="bottom" constant="33" id="AvE-HE-rGM"/>
+                            <constraint firstItem="PWh-xS-nFj" firstAttribute="bottom" secondItem="qsx-XL-M08" secondAttribute="bottom" id="DlG-9d-V4p"/>
+                            <constraint firstItem="PWh-xS-nFj" firstAttribute="trailing" secondItem="siy-6E-vzU" secondAttribute="trailing" constant="16" id="DyY-p3-CU6"/>
+                            <constraint firstItem="siy-6E-vzU" firstAttribute="leading" secondItem="PWh-xS-nFj" secondAttribute="leading" constant="16" id="MgA-6b-y6o"/>
+                            <constraint firstItem="PWh-xS-nFj" firstAttribute="bottom" secondItem="YNa-87-a6G" secondAttribute="bottom" id="QoY-3W-1fP"/>
+                            <constraint firstItem="uQu-vp-UCH" firstAttribute="leading" secondItem="PWh-xS-nFj" secondAttribute="leading" id="SUh-pd-RUl"/>
+                            <constraint firstItem="PWh-xS-nFj" firstAttribute="trailing" secondItem="2sg-Rg-LCl" secondAttribute="trailing" constant="16" id="TNc-U2-BLk"/>
+                            <constraint firstItem="2sg-Rg-LCl" firstAttribute="top" secondItem="uQu-vp-UCH" secondAttribute="bottom" constant="25" id="X7A-9q-HWE"/>
+                            <constraint firstItem="uQu-vp-UCH" firstAttribute="top" secondItem="PWh-xS-nFj" secondAttribute="top" id="YiA-eT-CU4"/>
+                            <constraint firstItem="GYd-84-BLA" firstAttribute="leading" secondItem="PWh-xS-nFj" secondAttribute="leading" constant="16" id="euq-Qm-dJU"/>
+                            <constraint firstItem="siy-6E-vzU" firstAttribute="centerX" secondItem="sA9-Y9-6J2" secondAttribute="centerX" id="f5c-E3-HK4"/>
+                            <constraint firstItem="PWh-xS-nFj" firstAttribute="trailing" secondItem="GYd-84-BLA" secondAttribute="trailing" constant="16" id="lXm-Sv-zbm"/>
+                            <constraint firstItem="PWh-xS-nFj" firstAttribute="bottom" secondItem="H4Q-GU-1cS" secondAttribute="bottom" id="m2f-qy-IrV"/>
+                            <constraint firstItem="GYd-84-BLA" firstAttribute="centerX" secondItem="2sg-Rg-LCl" secondAttribute="centerX" id="pRH-EF-bFL"/>
+                            <constraint firstItem="uQu-vp-UCH" firstAttribute="trailing" secondItem="PWh-xS-nFj" secondAttribute="trailing" id="qi3-op-w8b"/>
+                            <constraint firstItem="siy-6E-vzU" firstAttribute="centerY" secondItem="sA9-Y9-6J2" secondAttribute="centerY" id="qir-R5-vzd"/>
+                            <constraint firstItem="2sg-Rg-LCl" firstAttribute="leading" secondItem="PWh-xS-nFj" secondAttribute="leading" constant="16" id="qkx-PV-j12"/>
+                            <constraint firstItem="H4Q-GU-1cS" firstAttribute="top" secondItem="GYd-84-BLA" secondAttribute="bottom" constant="33" id="sa2-VB-Y2g"/>
+                            <constraint firstItem="YNa-87-a6G" firstAttribute="leading" secondItem="qsx-XL-M08" secondAttribute="trailing" constant="40" id="zYA-8R-WYT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uLM-aM-Yl7"/>
+                    <connections>
+                        <outlet property="labelLabel" destination="siy-6E-vzU" id="YfE-0L-MYj"/>
+                        <outlet property="negButton" destination="YNa-87-a6G" id="4Ja-bp-3ER"/>
+                        <outlet property="neutralButton" destination="qsx-XL-M08" id="Fmo-a6-l6O"/>
+                        <outlet property="posButton" destination="H4Q-GU-1cS" id="PPo-O1-bOW"/>
+                        <outlet property="tweetLabel" destination="2sg-Rg-LCl" id="Xoy-5c-S7J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0IC-xb-JeZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3151.1999999999998" y="151.57421289355324"/>
+            <point key="canvasLocation" x="4090.4000000000001" y="151.57421289355324"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zOY-4x-4pQ">
@@ -185,6 +256,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pQX-0M-dVA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3C3-PD-d5U">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CPB-uj-mIW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xU2-ST-L3T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KgO-Ov-gO5" kind="relationship" relationship="rootViewController" id="94d-f9-vW6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="obo-3M-pLz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2248.8000000000002" y="150.67466266866569"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
