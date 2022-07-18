@@ -9,8 +9,10 @@
 import UIKit
 
 class ModifyPredictionController: UIViewController {
-    var tweet: TwitttermentGaugeInput!
+//    var tweet: TwitttermentGaugeInput!
+    var tweet: Tweet!
     var label: String!
+    var dataController: DataController!
     
     @IBOutlet var tweetLabel: UILabel!
     @IBOutlet var labelLabel: UILabel!

@@ -14,24 +14,24 @@
             <objects>
                 <viewController id="gJu-1w-wsk" customClass="ViewController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a7b-3t-cqJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jwa-r8-Fd9">
-                                <rect key="frame" x="0.0" y="46" width="375" height="621"/>
+                                <rect key="frame" x="0.0" y="46" width="375" height="601"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="MLc-Nf-Ipl">
-                                        <rect key="frame" x="0.0" y="48" width="375" height="573"/>
+                                        <rect key="frame" x="0.0" y="48" width="375" height="553"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ep9-2h-KsB">
-                                                <rect key="frame" x="133.5" y="0.0" width="108" height="275"/>
+                                                <rect key="frame" x="133.5" y="0.0" width="108" height="255"/>
                                                 <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="117-AY-2rE">
-                                                <rect key="frame" x="142" y="330" width="91.5" height="33"/>
+                                                <rect key="frame" x="142" y="310" width="91.5" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="FRs-kH-jLe"/>
                                                 </constraints>
@@ -41,7 +41,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How do people feel about..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HP9-ee-vOF">
-                                                <rect key="frame" x="0.0" y="418" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="398" width="375" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="6wm-BH-uBw"/>
                                                 </constraints>
@@ -49,7 +49,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rge-zl-NGZ">
-                                                <rect key="frame" x="137.5" y="523" width="100" height="50"/>
+                                                <rect key="frame" x="137.5" y="503" width="100" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="lv1-5K-4W0"/>
                                                 </constraints>
@@ -90,10 +90,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Twitter Sentiment Gauge" leftItemsSupplementBackButton="YES" id="I0U-sh-TFB">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="I0l-tg-NeG"/>
+                        <barButtonItem key="leftBarButtonItem" title="CLEAR" image="multiply.circle.fill" catalog="system" id="I0l-tg-NeG">
+                            <connections>
+                                <action selector="clearPressed:" destination="gJu-1w-wsk" id="XoD-bE-xgF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="HELP?" image="live_help" id="HgF-Nf-dSp">
+                            <connections>
+                                <action selector="helpPressed:" destination="gJu-1w-wsk" id="Qkh-mQ-t0l"/>
+                                <segue destination="hkj-r2-sry" kind="show" identifier="getHelp" id="UbJ-CB-Gp8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundView" destination="jwa-r8-Fd9" id="5UJ-WU-hbt"/>
+                        <outlet property="clearBarBtn" destination="I0l-tg-NeG" id="WCP-Te-xLd"/>
+                        <outlet property="helpBarBtn" destination="HgF-Nf-dSp" id="SAP-01-6cf"/>
                         <outlet property="sentimentLabel" destination="Ep9-2h-KsB" id="RGg-ER-dLz"/>
                         <outlet property="textField" destination="HP9-ee-vOF" id="eKD-X0-T0H"/>
                     </connections>
@@ -119,7 +131,7 @@
                     <navigationItem key="navigationItem" title="Prediction Details" id="uVX-WY-Q6y">
                         <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="l4g-jJ-5hc">
                             <connections>
-                                <segue destination="gJu-1w-wsk" kind="presentation" identifier="backToMain" modalPresentationStyle="fullScreen" id="2Jn-SK-0fY"/>
+                                <segue destination="gJu-1w-wsk" kind="show" identifier="backToMain" id="2Jn-SK-0fY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -275,12 +287,58 @@
             </objects>
             <point key="canvasLocation" x="2248.8000000000002" y="150.67466266866569"/>
         </scene>
+        <!--Help View Controller-->
+        <scene sceneID="0nq-4R-b9g">
+            <objects>
+                <viewController id="hkj-r2-sry" customClass="HelpViewController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c6T-x2-lox">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to TwittermentGauge!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJq-mh-a7Q">
+                                <rect key="frame" x="16" y="20" width="343" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" allowsEditingTextAttributes="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LGU-9J-bLd">
+                                <rect key="frame" x="16" y="64" width="343" height="563"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="80a-jp-m9h"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="80a-jp-m9h" firstAttribute="trailing" secondItem="GJq-mh-a7Q" secondAttribute="trailing" constant="16" id="0n6-C3-Igb"/>
+                            <constraint firstItem="LGU-9J-bLd" firstAttribute="leading" secondItem="80a-jp-m9h" secondAttribute="leading" constant="16" id="57q-9s-bnM"/>
+                            <constraint firstItem="80a-jp-m9h" firstAttribute="trailing" secondItem="LGU-9J-bLd" secondAttribute="trailing" constant="16" id="A2c-pD-0xp"/>
+                            <constraint firstItem="80a-jp-m9h" firstAttribute="bottom" secondItem="LGU-9J-bLd" secondAttribute="bottom" constant="20" id="fN0-Rk-hs7"/>
+                            <constraint firstItem="LGU-9J-bLd" firstAttribute="top" secondItem="GJq-mh-a7Q" secondAttribute="bottom" constant="20" id="mXS-P2-E3o"/>
+                            <constraint firstItem="GJq-mh-a7Q" firstAttribute="leading" secondItem="80a-jp-m9h" secondAttribute="leading" constant="16" id="tWA-Lp-yQP"/>
+                            <constraint firstItem="GJq-mh-a7Q" firstAttribute="top" secondItem="80a-jp-m9h" secondAttribute="top" constant="20" id="tji-sm-FQy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9Gs-Rn-99u"/>
+                    <connections>
+                        <outlet property="textView" destination="LGU-9J-bLd" id="9am-s5-mz5"/>
+                        <outlet property="welcomeLbl" destination="GJq-mh-a7Q" id="His-ef-D8O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bBA-x4-iIe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1949.5999999999999" y="-856.82158920539734"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Wxx-8W-V2k"/>
+        <segue reference="l71-9T-kMj"/>
         <segue reference="2Jn-SK-0fY"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="live_help" width="33.5" height="33.5"/>
+        <image name="multiply.circle.fill" catalog="system" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
