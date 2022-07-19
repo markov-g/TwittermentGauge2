@@ -9,6 +9,8 @@ import SwiftyJSON
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var explainBtn: UIButton!
+    @IBOutlet weak var predictBtn: UIButton!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var sentimentLabel: UILabel!
@@ -20,6 +22,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textField.delegate = self
+        self.predictBtn.isEnabled = false
+        self.predictBtn.tintColor = UIColor.gray
+        self.explainBtn.isEnabled = false
+        self.predictBtn.setTitleColor(UIColor.gray, for: UIControl.State.disabled)
     }
 
     @IBAction func clearPressed(_ sender: UIBarButtonItem) {
@@ -54,6 +61,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func predictPressed(_ sender: Any) {
+        if textField.text == "" {
+            showFailure(title: "Empty Search String", message: "Please provide a search term.")
+            return
+        }
         let fetcher = TweetFetcher(dataController: dataController)
         fetcher.fetchTweets(with: textField.text, completion: tweetHandlerT(tw:error:))
     }
@@ -105,6 +116,8 @@ class ViewController: UIViewController {
     }
     
     func updateUI(with santimentScore: Int) {
+        self.explainBtn.isEnabled = true
+        
         if santimentScore > 15 {
             self.sentimentLabel.text = "😍"
         } else if santimentScore > 7 {
@@ -127,8 +140,7 @@ extension ViewController {
             if let navVC = segue.destination as? UINavigationController {
                 if let controller = navVC.topViewController as? DetailTableViewController {
                     controller.dataController = dataController
-                    // TODO: This should be removed and data loaded from core data
-//                    controller.tweetSentimentSequenceBundle = tweetSentimentSequenceBundle
+                    self.explainBtn.isEnabled = true
                 }
             }
         }
@@ -144,6 +156,9 @@ extension ViewController {
     }
 }
 
-
-
-
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        self.predictBtn.isEnabled = true
+        return true
+    }
+}

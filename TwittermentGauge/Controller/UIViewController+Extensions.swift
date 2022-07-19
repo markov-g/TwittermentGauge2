@@ -7,13 +7,16 @@
 //
 
 import UIKit
-import CoreLocation
-import MapKit
 
 extension UIViewController {
     func showFailure(title: String, message: String) {
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        let alertVC = UIAlertController()
+        alertVC.title = title
+        alertVC.message = message
+        let okAction = UIAlertAction(title: "ok", style: UIAlertAction.Style.default) { action in self.dismiss(animated: true, completion: nil)
+        }
+
+        alertVC.addAction(okAction)
+        present(alertVC, animated: true, completion: nil)
     }
 }

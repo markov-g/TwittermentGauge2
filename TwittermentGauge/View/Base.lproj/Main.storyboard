@@ -37,7 +37,7 @@
                                                 </constraints>
                                                 <buttonConfiguration key="configuration" style="gray" title="Explain"/>
                                                 <connections>
-                                                    <segue destination="CPB-uj-mIW" kind="presentation" identifier="predictions" modalPresentationStyle="fullScreen" id="l71-9T-kMj"/>
+                                                    <segue destination="CPB-uj-mIW" kind="show" identifier="predictions" id="l71-9T-kMj"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How do people feel about..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HP9-ee-vOF">
@@ -105,7 +105,9 @@
                     <connections>
                         <outlet property="backgroundView" destination="jwa-r8-Fd9" id="5UJ-WU-hbt"/>
                         <outlet property="clearBarBtn" destination="I0l-tg-NeG" id="WCP-Te-xLd"/>
+                        <outlet property="explainBtn" destination="117-AY-2rE" id="oQy-oD-QML"/>
                         <outlet property="helpBarBtn" destination="HgF-Nf-dSp" id="SAP-01-6cf"/>
+                        <outlet property="predictBtn" destination="Rge-zl-NGZ" id="mq5-lV-SZu"/>
                         <outlet property="sentimentLabel" destination="Ep9-2h-KsB" id="RGg-ER-dLz"/>
                         <outlet property="textField" destination="HP9-ee-vOF" id="eKD-X0-T0H"/>
                     </connections>
@@ -119,7 +121,7 @@
             <objects>
                 <tableViewController id="KgO-Ov-gO5" customClass="DetailTableViewController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ggi-mw-tdN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections/>
@@ -137,7 +139,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tweetDetailTableView" destination="ggi-mw-tdN" id="3PL-eB-xEo"/>
-                        <segue destination="4iB-Vi-X3d" kind="presentation" identifier="predictionDetail" modalPresentationStyle="fullScreen" id="IKE-Yr-NrM"/>
+                        <segue destination="4iB-Vi-X3d" kind="show" identifier="predictionDetail" id="IKE-Yr-NrM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4al-gH-Z8i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -149,24 +151,28 @@
             <objects>
                 <viewController storyboardIdentifier="ModifyPredictionVC" id="4iB-Vi-X3d" customClass="ModifyPredictionController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sA9-Y9-6J2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQu-vp-UCH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="56"/>
                                 <items>
                                     <navigationItem title="Modify Prediction" id="IQl-EE-hR3">
                                         <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="eqH-GF-PcO">
                                             <connections>
-                                                <segue destination="CPB-uj-mIW" kind="presentation" identifier="backToPredictions" modalPresentationStyle="fullScreen" id="Wxx-8W-V2k"/>
+                                                <segue destination="CPB-uj-mIW" kind="show" identifier="backToPredictions" id="Wxx-8W-V2k"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BkG-Z9-QYm"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BkG-Z9-QYm">
+                                            <connections>
+                                                <action selector="save:" destination="4iB-Vi-X3d" id="nyT-1h-UbV"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4Q-GU-1cS">
-                                <rect key="frame" x="16" y="636" width="76" height="31"/>
+                                <rect key="frame" x="16" y="616" width="76" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="POS (+)"/>
                                 <connections>
@@ -174,7 +180,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsx-XL-M08">
-                                <rect key="frame" x="132" y="636" width="111" height="31"/>
+                                <rect key="frame" x="132" y="616" width="111" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="NEUTRAL (=)"/>
                                 <connections>
@@ -182,7 +188,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNa-87-a6G">
-                                <rect key="frame" x="283" y="636" width="73.5" height="31"/>
+                                <rect key="frame" x="283" y="616" width="73.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="NEG (-)"/>
                                 <connections>
@@ -190,7 +196,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYd-84-BLA">
-                                <rect key="frame" x="16" y="556" width="343" height="47"/>
+                                <rect key="frame" x="16" y="536" width="343" height="47"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="CHANGE SENTIMENT" buttonSize="large"/>
                                 <connections>
@@ -198,13 +204,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tweet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sg-Rg-LCl">
-                                <rect key="frame" x="16" y="69" width="343" height="20.5"/>
+                                <rect key="frame" x="16" y="137" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siy-6E-vzU">
-                                <rect key="frame" x="16" y="323.5" width="343" height="20.5"/>
+                                <rect key="frame" x="16" y="313.5" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -274,8 +280,9 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CPB-uj-mIW" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="b0k-09-3so"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xU2-ST-L3T">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -296,13 +303,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to TwittermentGauge!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJq-mh-a7Q">
-                                <rect key="frame" x="16" y="20" width="343" height="24"/>
+                                <rect key="frame" x="16" y="76" width="343" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" allowsEditingTextAttributes="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LGU-9J-bLd">
-                                <rect key="frame" x="16" y="64" width="343" height="563"/>
+                                <rect key="frame" x="16" y="120" width="343" height="507"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -333,12 +340,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="l71-9T-kMj"/>
+        <segue reference="Wxx-8W-V2k"/>
         <segue reference="2Jn-SK-0fY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="live_help" width="33.5" height="33.5"/>
-        <image name="multiply.circle.fill" catalog="system" width="32" height="32"/>
+        <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

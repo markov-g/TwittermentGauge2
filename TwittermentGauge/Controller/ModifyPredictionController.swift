@@ -29,6 +29,9 @@ class ModifyPredictionController: UIViewController {
         labelLabel.text = label
     }
     
+    @IBAction func save(_ sender: UIBarButtonItem) {
+    }
+    
     @IBAction func change(_ sender: Any) {
         posButton.isEnabled = true
         negButton.isEnabled = true
@@ -46,5 +49,16 @@ class ModifyPredictionController: UIViewController {
     @IBAction func neutral(_ sender: Any) {
         labelLabel.text = "Neutral"
     }
-    
+}
+
+extension ModifyPredictionController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "backToPredictions" {
+            if let navVC = segue.destination as? UINavigationController {
+                if let controller = navVC.topViewController as? DetailTableViewController {
+                    controller.dataController = dataController
+                }
+            }
+        }
+    }
 }
