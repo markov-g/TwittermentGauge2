@@ -14,21 +14,20 @@ class DetailTableViewController: UIViewController {
     let cellIdentifier = "PredictionCell"
     var dataController: DataController!
     var fetchedResultsFromDB: [TwitterSearchRequest]? = nil
-    
+    var refreshControl = UIRefreshControl()
     var tweets = Array<Tweet>()
-
-//    var tweets = Array<TwitttermentGaugeInput>()
-//    var labels = Array<String>()
-//    var tweetSentimentSequenceBundle: Zip2Sequence<[TwitttermentGaugeInput], [String]>? = nil {
-//        didSet {
-//            prepareTweetData()
-//        }
-//    }
-    
+            
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         tweetDetailTableView.delegate = self
         tweetDetailTableView.dataSource = self
         tweetDetailTableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        tweetDetailTableView.addSubview(refreshControl)
         
         let fetchRequest: NSFetchRequest<TwitterSearchRequest> = TwitterSearchRequest.fetchRequest()
         let sortDescriptor: NSSortDescriptor = NSSortDescriptor(key: "searchDT", ascending: false)
@@ -45,14 +44,10 @@ class DetailTableViewController: UIViewController {
         }
     }
     
-//    fileprivate func prepareTweetData() {
-//        if let tweetSentimentSequenceBundle = tweetSentimentSequenceBundle {
-//            for (_, t) in tweetSentimentSequenceBundle.enumerated() {
-//                tweets.append(t.0)
-//                labels.append(t.1)
-//            }
-//        }
-//    }
+    @objc func refresh(sender: AnyObject) {
+        tweetDetailTableView.reloadData()
+        self.refreshControl.endRefreshing()
+    }
 }
 
 extension DetailTableViewController: UITableViewDelegate, UITableViewDataSource {

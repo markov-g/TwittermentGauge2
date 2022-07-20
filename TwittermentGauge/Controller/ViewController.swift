@@ -20,6 +20,11 @@ class ViewController: UIViewController {
     var dataController: DataController!
     var tweetSentimentSequenceBundle: Zip2Sequence<[TwitttermentGaugeInput], [String]>? = nil
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.sentimentLabel.text = "😐"
+        self.textField.text = ""
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.textField.delegate = self
@@ -62,7 +67,7 @@ class ViewController: UIViewController {
     
     @IBAction func predictPressed(_ sender: Any) {
         if textField.text == "" {
-            showFailure(title: "Empty Search String", message: "Please provide a search term.")
+            showAlert(title: "Empty Search String", message: "Please provide a search term.")
             return
         }
         let fetcher = TweetFetcher(dataController: dataController)
@@ -83,7 +88,7 @@ class ViewController: UIViewController {
             updateUI(with: sentimentPrediction.0!)
         }
         else {
-            showFailure(title: "Couldn't fetch tweets", message: error!.localizedDescription)
+            showAlert(title: "Couldn't fetch tweets", message: error!.localizedDescription)
         }
     }
     
@@ -137,20 +142,14 @@ class ViewController: UIViewController {
 extension ViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "predictions" {
-            if let navVC = segue.destination as? UINavigationController {
-                if let controller = navVC.topViewController as? DetailTableViewController {
-                    controller.dataController = dataController
-                    self.explainBtn.isEnabled = true
-                }
+            if let controller = segue.destination as? DetailTableViewController {
+                controller.dataController = dataController
+                self.explainBtn.isEnabled = true
             }
         }
         if segue.identifier == "getHelp" {
-            if let navVC = segue.destination as? UINavigationController {
-                if let controller = navVC.topViewController as? HelpViewController {
-                    controller.dataController = dataController
-                    // TODO: This should be removed and data loaded from core data
-//                    controller.tweetSentimentSequenceBundle = tweetSentimentSequenceBundle
-                }
+            if let controller = segue.destination as? HelpViewController {
+                controller.dataController = dataController
             }
         }
     }

@@ -19,23 +19,36 @@ class ModifyPredictionController: UIViewController {
     @IBOutlet var posButton: UIButton!
     @IBOutlet var negButton: UIButton!
     @IBOutlet var neutralButton: UIButton!
-  
+    @IBOutlet weak var uploadBtn: UIBarButtonItem!
+    @IBOutlet weak var saveBtn: UIBarButtonItem!       
+    
     override func viewDidAppear(_ animated: Bool) {
         posButton.isEnabled = false
         negButton.isEnabled = false
         neutralButton.isEnabled = false
+        saveBtn.isEnabled = false
+        uploadBtn.isEnabled = false
         
         tweetLabel.text = tweet.text
         labelLabel.text = label
     }
     
+    @IBAction func upload(_ sender: UIBarButtonItem) {
+        print("upload to server")
+    }
+    
     @IBAction func save(_ sender: UIBarButtonItem) {
+        tweet.sentimentLabel = labelLabel.text
+        try? dataController.viewContext.save()
+        showAlert(title: "Saved!", message: "Change was saved!")
     }
     
     @IBAction func change(_ sender: Any) {
         posButton.isEnabled = true
         negButton.isEnabled = true
         neutralButton.isEnabled = true
+        self.saveBtn.isEnabled = true
+        self.uploadBtn.isEnabled = true
     }
     
     @IBAction func pos(_ sender: Any) {
@@ -51,14 +64,16 @@ class ModifyPredictionController: UIViewController {
     }
 }
 
-extension ModifyPredictionController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "backToPredictions" {
-            if let navVC = segue.destination as? UINavigationController {
-                if let controller = navVC.topViewController as? DetailTableViewController {
-                    controller.dataController = dataController
-                }
-            }
-        }
-    }
-}
+
+
+//extension ModifyPredictionController {
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "backToPredictions" {
+//            if let navVC = segue.destination as? UINavigationController {
+//                if let controller = navVC.topViewController as? DetailTableViewController {
+//                    controller.dataController = dataController
+//                }
+//            }
+//        }
+//    }
+//}
