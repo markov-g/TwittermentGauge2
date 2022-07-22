@@ -17,6 +17,11 @@ class DetailTableViewController: UIViewController {
     var refreshControl = UIRefreshControl()
     var tweets = Array<Tweet>()
             
+    
+    override func viewWillAppear(_ animated: Bool) {
+        refresh(sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,6 +77,7 @@ extension DetailTableViewController: UITableViewDelegate, UITableViewDataSource 
         modifyPredictionVC.label = label
         modifyPredictionVC.dataController = dataController
         
-        self.present(modifyPredictionVC, animated: true, completion: nil)
+//        self.present(modifyPredictionVC, animated: true, completion: nil)
+        self.show(modifyPredictionVC, sender: nil)
     }
 }

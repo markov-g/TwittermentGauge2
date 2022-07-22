@@ -140,7 +140,7 @@
             </objects>
             <point key="canvasLocation" x="2076" y="134"/>
         </scene>
-        <!--Modify Prediction Controller-->
+        <!--Modify Prediction-->
         <scene sceneID="QN8-g9-oaC">
             <objects>
                 <viewController storyboardIdentifier="ModifyPredictionVC" id="4iB-Vi-X3d" customClass="ModifyPredictionController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,7 +149,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4Q-GU-1cS">
-                                <rect key="frame" x="16" y="636" width="76" height="31"/>
+                                <rect key="frame" x="16" y="616" width="76" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="POS (+)"/>
                                 <connections>
@@ -157,7 +157,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsx-XL-M08">
-                                <rect key="frame" x="132" y="636" width="111" height="31"/>
+                                <rect key="frame" x="132" y="616" width="111" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="NEUTRAL (=)"/>
                                 <connections>
@@ -165,7 +165,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNa-87-a6G">
-                                <rect key="frame" x="283" y="636" width="73.5" height="31"/>
+                                <rect key="frame" x="283" y="616" width="73.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="NEG (-)"/>
                                 <connections>
@@ -173,7 +173,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYd-84-BLA">
-                                <rect key="frame" x="16" y="556" width="343" height="47"/>
+                                <rect key="frame" x="16" y="536" width="343" height="47"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="CHANGE SENTIMENT" buttonSize="large"/>
                                 <connections>
@@ -192,45 +192,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmD-pL-qd1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Modify Prediction" id="Hrr-wa-Qdb">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="Khm-C3-f76">
-                                            <connections>
-                                                <action selector="upload:" destination="4iB-Vi-X3d" id="fAG-aT-JS0"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="P52-hO-yb5">
-                                            <connections>
-                                                <action selector="save:" destination="4iB-Vi-X3d" id="6XW-5t-yZG"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PWh-xS-nFj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qsx-XL-M08" firstAttribute="leading" secondItem="H4Q-GU-1cS" secondAttribute="trailing" constant="40" id="6MO-Jn-TsJ"/>
-                            <constraint firstItem="wmD-pL-qd1" firstAttribute="top" secondItem="sA9-Y9-6J2" secondAttribute="top" id="76s-k7-XRE"/>
                             <constraint firstItem="siy-6E-vzU" firstAttribute="centerX" secondItem="sA9-Y9-6J2" secondAttribute="centerX" id="7EH-rF-NE4"/>
-                            <constraint firstItem="wmD-pL-qd1" firstAttribute="leading" secondItem="sA9-Y9-6J2" secondAttribute="leading" id="9S6-CP-np2"/>
                             <constraint firstItem="qsx-XL-M08" firstAttribute="top" secondItem="GYd-84-BLA" secondAttribute="bottom" constant="33" id="9rk-sE-Dsr"/>
                             <constraint firstItem="qsx-XL-M08" firstAttribute="centerX" secondItem="2sg-Rg-LCl" secondAttribute="centerX" id="A5B-LL-4Y0"/>
                             <constraint firstItem="YNa-87-a6G" firstAttribute="top" secondItem="GYd-84-BLA" secondAttribute="bottom" constant="33" id="AvE-HE-rGM"/>
-                            <constraint firstItem="PWh-xS-nFj" firstAttribute="bottom" secondItem="qsx-XL-M08" secondAttribute="bottom" id="DlG-9d-V4p"/>
+                            <constraint firstItem="PWh-xS-nFj" firstAttribute="bottom" secondItem="qsx-XL-M08" secondAttribute="bottom" constant="20" id="DlG-9d-V4p"/>
                             <constraint firstItem="PWh-xS-nFj" firstAttribute="trailing" secondItem="siy-6E-vzU" secondAttribute="trailing" constant="16" id="DyY-p3-CU6"/>
                             <constraint firstItem="siy-6E-vzU" firstAttribute="leading" secondItem="PWh-xS-nFj" secondAttribute="leading" constant="16" id="MgA-6b-y6o"/>
-                            <constraint firstItem="PWh-xS-nFj" firstAttribute="bottom" secondItem="YNa-87-a6G" secondAttribute="bottom" id="QoY-3W-1fP"/>
+                            <constraint firstItem="PWh-xS-nFj" firstAttribute="bottom" secondItem="YNa-87-a6G" secondAttribute="bottom" constant="20" id="QoY-3W-1fP"/>
+                            <constraint firstItem="2sg-Rg-LCl" firstAttribute="top" secondItem="PWh-xS-nFj" secondAttribute="top" constant="35" id="SiA-p8-uR3"/>
                             <constraint firstItem="PWh-xS-nFj" firstAttribute="trailing" secondItem="2sg-Rg-LCl" secondAttribute="trailing" constant="16" id="TNc-U2-BLk"/>
-                            <constraint firstAttribute="trailing" secondItem="wmD-pL-qd1" secondAttribute="trailing" id="Vwd-Nw-hcD"/>
                             <constraint firstItem="GYd-84-BLA" firstAttribute="leading" secondItem="PWh-xS-nFj" secondAttribute="leading" constant="16" id="euq-Qm-dJU"/>
                             <constraint firstItem="siy-6E-vzU" firstAttribute="centerX" secondItem="sA9-Y9-6J2" secondAttribute="centerX" id="f5c-E3-HK4"/>
-                            <constraint firstItem="2sg-Rg-LCl" firstAttribute="top" secondItem="wmD-pL-qd1" secondAttribute="bottom" constant="35" id="h57-p1-OoI"/>
                             <constraint firstItem="PWh-xS-nFj" firstAttribute="trailing" secondItem="GYd-84-BLA" secondAttribute="trailing" constant="16" id="lXm-Sv-zbm"/>
-                            <constraint firstItem="PWh-xS-nFj" firstAttribute="bottom" secondItem="H4Q-GU-1cS" secondAttribute="bottom" id="m2f-qy-IrV"/>
+                            <constraint firstItem="PWh-xS-nFj" firstAttribute="bottom" secondItem="H4Q-GU-1cS" secondAttribute="bottom" constant="20" id="m2f-qy-IrV"/>
                             <constraint firstItem="GYd-84-BLA" firstAttribute="centerX" secondItem="2sg-Rg-LCl" secondAttribute="centerX" id="pRH-EF-bFL"/>
                             <constraint firstItem="siy-6E-vzU" firstAttribute="centerY" secondItem="sA9-Y9-6J2" secondAttribute="centerY" id="qir-R5-vzd"/>
                             <constraint firstItem="2sg-Rg-LCl" firstAttribute="leading" secondItem="PWh-xS-nFj" secondAttribute="leading" constant="16" id="qkx-PV-j12"/>
@@ -238,7 +218,20 @@
                             <constraint firstItem="YNa-87-a6G" firstAttribute="leading" secondItem="qsx-XL-M08" secondAttribute="trailing" constant="40" id="zYA-8R-WYT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Xti-mt-ZPn"/>
+                    <navigationItem key="navigationItem" title="Modify Prediction" id="Hrr-wa-Qdb">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="P52-hO-yb5">
+                                <connections>
+                                    <action selector="save:" destination="4iB-Vi-X3d" id="6XW-5t-yZG"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="Khm-C3-f76">
+                                <connections>
+                                    <action selector="upload:" destination="4iB-Vi-X3d" id="fAG-aT-JS0"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="labelLabel" destination="siy-6E-vzU" id="YfE-0L-MYj"/>
                         <outlet property="negButton" destination="YNa-87-a6G" id="4Ja-bp-3ER"/>

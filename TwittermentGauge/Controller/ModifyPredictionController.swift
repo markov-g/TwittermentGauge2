@@ -60,28 +60,35 @@ class ModifyPredictionController: UIViewController {
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
+        self._save()
+        showAlert(title: "Saved!", message: "Change was saved!")
+    }
+    
+    private func _save() {
         tweet.sentimentLabel = labelLabel.text
         try? dataController.viewContext.save()
-        showAlert(title: "Saved!", message: "Change was saved!")
     }
     
     @IBAction func change(_ sender: Any) {
         posButton.isEnabled = true
         negButton.isEnabled = true
         neutralButton.isEnabled = true
-        self.saveBtn.isEnabled = true
+        saveBtn.isEnabled = true
     }
     
     @IBAction func pos(_ sender: Any) {
         labelLabel.text = "Pos"
+        self._save()
     }
     
     @IBAction func neg(_ sender: Any) {
         labelLabel.text = "Neg"
+        self._save()
     }
     
     @IBAction func neutral(_ sender: Any) {
         labelLabel.text = "Neutral"
+        self._save()
     }
 }
 
