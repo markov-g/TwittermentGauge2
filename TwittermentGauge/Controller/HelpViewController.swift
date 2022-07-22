@@ -23,6 +23,14 @@ class HelpViewController: UIViewController {
         
         textView.text += "Note: Your searches and results are being saved for the purpose of allowig you to upload your modified sentiments to the server to improve the classification algorithm. To do so: \n"
         textView.text += "3. On the Prediction Details screen, you can click on any tweet and modify the prediction if you disagree with it. Clicking 'Save' will automatically upload the result to our server. \n\n"
-        textView.text += "4. To delete all saved searches and related tweets, you can press the ✖️ button on the main screen."        
+        textView.text += "4. To delete all saved searches and related tweets, you can press the ✖️ button on the main screen."
+        
+        textView.text += "\n\nSENTIMENT SCORE: \n"
+        textView.text += " > 15     -> 😍\n"
+        textView.text += " > 7      -> 😁\n"
+        textView.text += " > 0      -> 🤨\n"
+        textView.text += " > -7     -> 😍\n"
+        textView.text += " > -15    -> 😞\n"
+        textView.text += " < -15    -> 🤮"
     }
 }
