@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aVj-Uy-n3h">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -12,26 +12,26 @@
         <!--Twitter Sentiment Gauge-->
         <scene sceneID="5eC-3A-3fI">
             <objects>
-                <viewController id="gJu-1w-wsk" customClass="ViewController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gJu-1w-wsk" customClass="MainViewController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a7b-3t-cqJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jwa-r8-Fd9">
-                                <rect key="frame" x="0.0" y="46" width="375" height="621"/>
+                                <rect key="frame" x="0.0" y="46" width="375" height="732"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="MLc-Nf-Ipl">
-                                        <rect key="frame" x="0.0" y="48" width="375" height="573"/>
+                                        <rect key="frame" x="0.0" y="48" width="375" height="684"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ep9-2h-KsB">
-                                                <rect key="frame" x="133.5" y="0.0" width="108" height="275"/>
+                                                <rect key="frame" x="133.66666666666666" y="0.0" width="108" height="311"/>
                                                 <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="117-AY-2rE">
-                                                <rect key="frame" x="142" y="330" width="91.5" height="33"/>
+                                                <rect key="frame" x="141.66666666666666" y="366" width="91.666666666666657" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="FRs-kH-jLe"/>
                                                 </constraints>
@@ -41,15 +41,18 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How do people feel about..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HP9-ee-vOF">
-                                                <rect key="frame" x="0.0" y="418" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="454" width="375" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="6wm-BH-uBw"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Eci-Kr-l9a">
+                                                <rect key="frame" x="177.66666666666666" y="559" width="20" height="20"/>
+                                            </activityIndicatorView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rge-zl-NGZ">
-                                                <rect key="frame" x="137.5" y="523" width="100" height="50"/>
+                                                <rect key="frame" x="137.66666666666666" y="634" width="100" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="lv1-5K-4W0"/>
                                                 </constraints>
@@ -103,6 +106,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Eci-Kr-l9a" id="YNL-nj-A7R"/>
                         <outlet property="backgroundView" destination="jwa-r8-Fd9" id="5UJ-WU-hbt"/>
                         <outlet property="clearBarBtn" destination="I0l-tg-NeG" id="WCP-Te-xLd"/>
                         <outlet property="explainBtn" destination="117-AY-2rE" id="oQy-oD-QML"/>
@@ -121,7 +125,7 @@
             <objects>
                 <tableViewController id="KgO-Ov-gO5" customClass="DetailTableViewController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ggi-mw-tdN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections/>
@@ -145,11 +149,11 @@
             <objects>
                 <viewController storyboardIdentifier="ModifyPredictionVC" id="4iB-Vi-X3d" customClass="ModifyPredictionController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sA9-Y9-6J2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4Q-GU-1cS">
-                                <rect key="frame" x="16" y="616" width="76" height="31"/>
+                                <rect key="frame" x="16" y="727" width="76" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="POS (+)"/>
                                 <connections>
@@ -157,7 +161,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsx-XL-M08">
-                                <rect key="frame" x="132" y="616" width="111" height="31"/>
+                                <rect key="frame" x="132" y="727" width="111" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="NEUTRAL (=)"/>
                                 <connections>
@@ -165,7 +169,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNa-87-a6G">
-                                <rect key="frame" x="283" y="616" width="73.5" height="31"/>
+                                <rect key="frame" x="283" y="727" width="73.666666666666686" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="NEG (-)"/>
                                 <connections>
@@ -173,7 +177,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYd-84-BLA">
-                                <rect key="frame" x="16" y="536" width="343" height="47"/>
+                                <rect key="frame" x="16" y="647" width="343" height="47"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="CHANGE SENTIMENT" buttonSize="large"/>
                                 <connections>
@@ -181,13 +185,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tweet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sg-Rg-LCl">
-                                <rect key="frame" x="16" y="79" width="343" height="20.5"/>
+                                <rect key="frame" x="16" y="122.99999999999999" width="343" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siy-6E-vzU">
-                                <rect key="frame" x="16" y="323.5" width="343" height="20.5"/>
+                                <rect key="frame" x="16" y="395.66666666666669" width="343" height="20.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -252,7 +256,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aVj-Uy-n3h" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="j8i-Gp-vD8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -269,17 +273,17 @@
             <objects>
                 <viewController id="hkj-r2-sry" customClass="HelpViewController" customModule="TwittermentGauge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c6T-x2-lox">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to TwittermentGauge!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJq-mh-a7Q">
-                                <rect key="frame" x="16" y="64" width="343" height="24"/>
+                                <rect key="frame" x="16" y="108" width="343" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" allowsEditingTextAttributes="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LGU-9J-bLd">
-                                <rect key="frame" x="16" y="108" width="343" height="539"/>
+                                <rect key="frame" x="16" y="152" width="343" height="606"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -310,7 +314,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="live_help" width="33.5" height="33.5"/>
+        <image name="live_help" width="33.333332061767578" height="33.333332061767578"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

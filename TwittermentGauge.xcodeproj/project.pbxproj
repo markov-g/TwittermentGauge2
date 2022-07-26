@@ -25,7 +25,7 @@
 		3AE2322627EACF5C001863DB /* PredictionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE2322527EACF5C001863DB /* PredictionCell.xib */; };
 		3AEFD20A26B7A3520009CF42 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AEFD20926B7A3520009CF42 /* Secrets.plist */; };
 		AD9EC65020FE2EF4002AE9BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EC64F20FE2EF4002AE9BF /* AppDelegate.swift */; };
-		AD9EC65220FE2EF4002AE9BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EC65120FE2EF4002AE9BF /* ViewController.swift */; };
+		AD9EC65220FE2EF4002AE9BF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EC65120FE2EF4002AE9BF /* MainViewController.swift */; };
 		AD9EC65520FE2EF4002AE9BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9EC65320FE2EF4002AE9BF /* Main.storyboard */; };
 		AD9EC65720FE2EF7002AE9BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD9EC65620FE2EF7002AE9BF /* Assets.xcassets */; };
 		AD9EC65A20FE2EF7002AE9BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9EC65820FE2EF7002AE9BF /* LaunchScreen.storyboard */; };
@@ -49,7 +49,7 @@
 		3AEFD20926B7A3520009CF42 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		AD9EC64C20FE2EF4002AE9BF /* TwittermentGauge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwittermentGauge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9EC64F20FE2EF4002AE9BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AD9EC65120FE2EF4002AE9BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AD9EC65120FE2EF4002AE9BF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AD9EC65420FE2EF4002AE9BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD9EC65620FE2EF7002AE9BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD9EC65920FE2EF7002AE9BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		3AE2322227E979C6001863DB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AD9EC65120FE2EF4002AE9BF /* ViewController.swift */,
+				AD9EC65120FE2EF4002AE9BF /* MainViewController.swift */,
 				3AE2321D27E97925001863DB /* DetailsTableViewController.swift */,
 				3A756BF427EF420E001E36F1 /* UIViewController+Extensions.swift */,
 				3ADCCFDE27F90697008A1ABE /* CredentialsManager.swift */,
@@ -245,7 +245,7 @@
 				3A839BAC26B524CE00AFB6CB /* TwitttermentGauge.mlmodel in Sources */,
 				3ADCCFDF27F90697008A1ABE /* CredentialsManager.swift in Sources */,
 				3A756BF527EF420E001E36F1 /* UIViewController+Extensions.swift in Sources */,
-				AD9EC65220FE2EF4002AE9BF /* ViewController.swift in Sources */,
+				AD9EC65220FE2EF4002AE9BF /* MainViewController.swift in Sources */,
 				3ABF87002801D56E00D6693B /* PredictionCell.swift in Sources */,
 				AD9EC65020FE2EF4002AE9BF /* AppDelegate.swift in Sources */,
 				3ADCCFDD27F905DA008A1ABE /* SentimentPredictor.swift in Sources */,

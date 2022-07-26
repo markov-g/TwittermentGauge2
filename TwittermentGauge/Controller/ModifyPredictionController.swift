@@ -54,7 +54,7 @@ class ModifyPredictionController: UIViewController {
                 case .success(let data):
                     self.showAlert(title: "Thanks!", message: "Thank you for taking the time to correct and share the sentiment clasification. Your input will be used to re-train and improve the classifier in the next version.")
                 case .failure(let error):
-                    self.showAlert(title: "connection error!", message: error.localizedDescription)
+                    self.showAlert(title: "connection error!", message: "it seems like the back-end server is currently not reachable. please ensure \(self.endpoint) is reachable.")
             }
         }
     }

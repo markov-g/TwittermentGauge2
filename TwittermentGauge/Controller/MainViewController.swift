@@ -7,7 +7,7 @@ import UIKit
 import CoreData
 import SwiftyJSON
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     @IBOutlet weak var explainBtn: UIButton!
     @IBOutlet weak var predictBtn: UIButton!
@@ -15,14 +15,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var sentimentLabel: UILabel!
     @IBOutlet weak var clearBarBtn: UIBarButtonItem!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var helpBarBtn: UIBarButtonItem!
+    var frame_h: CGFloat = 0
+    var frame_w: CGFloat = 0
     
     var dataController: DataController!
     var tweetSentimentSequenceBundle: Zip2Sequence<[TwitttermentGaugeInput], [String]>? = nil
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.sentimentLabel.text = "😐"
         self.textField.text = ""
+        subscribeToKeyboardNotifications()
     }
     
     override func viewDidLoad() {
@@ -31,9 +36,17 @@ class ViewController: UIViewController {
         self.predictBtn.isEnabled = false
         self.predictBtn.tintColor = UIColor.gray
         self.explainBtn.isEnabled = false
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.hidesWhenStopped = true
         self.predictBtn.setTitleColor(UIColor.gray, for: UIControl.State.disabled)
+        frame_h = view.frame.size.height
+        frame_w = view.frame.size.width 
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        unsubscribeFromKeyboardNotifications()
+    }
+    
     @IBAction func clearPressed(_ sender: UIBarButtonItem) {
         for entity in [Tweet.self, TwitterSearchRequest.self] {
         // create the delete request for the specified entity
@@ -66,10 +79,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func predictPressed(_ sender: Any) {
+        textField.resignFirstResponder()
         if textField.text == "" {
             showAlert(title: "Empty Search String", message: "Please provide a search term.")
             return
         }
+        
+        self.activityIndicator.startAnimating()
         let fetcher = TweetFetcher(dataController: dataController)
         fetcher.fetchTweets(with: textField.text, completion: tweetHandlerT(tw:error:))
     }
@@ -122,6 +138,7 @@ class ViewController: UIViewController {
     
     func updateUI(with santimentScore: Int) {
         self.explainBtn.isEnabled = true
+        self.activityIndicator.stopAnimating()
         
         if santimentScore > 15 {
             self.sentimentLabel.text = "😍"
@@ -139,7 +156,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
+extension MainViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "predictions" {
             if let controller = segue.destination as? DetailTableViewController {
@@ -155,9 +172,46 @@ extension ViewController {
     }
 }
 
-extension ViewController: UITextFieldDelegate {
+extension MainViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.predictBtn.isEnabled = true
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
+}
+
+// MARK: Keyboard Notifications
+extension MainViewController {
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillShow(_ notification:Notification) {
+        // scale the imageview to show the entire image rather than slide it
+        view.frame.size.height = frame_h
+        view.frame.size.height -= getKeyboardHeight(notification)
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        view.frame.size.height = frame_h
+    }
+    
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
     }
 }

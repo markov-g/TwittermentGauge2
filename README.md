@@ -1,6 +1,11 @@
 # TwittermentGauge
 
-Uses a NLP model to predict the sentiment for a Twitter handle (e.g. @Apple,
+This iPhone application uses a trained NLP model to predict the sentiment for a Twitter handle (e.g. @Apple,
 @CocaCola) or for a hashtag (e.g. #blessed, #AAPL, #BTC). 
+
+The entire project consists of 3 main parts:
+1. Model Training. The model training was done using Apple's `CreateML` framework. The initial set of training data, as well as the training and testing loop can be found in the `ModelMaker.playground` file inside the `Assets/model_training` folder. 
+2. iOS App - The iOS app `TwittermentGauge` provide a iOS interface to interact with the model. It allows the user to enter a search term in the search box and obtain a general sentiment classification (presented via a simple emoji). The user can also inspect the detailed tweet-by-tweet classification to better understand the obtained comulative score and can correct and upload wrong classification for future re-training.
+3. BackEnd for storing Training Data. The back-end vapor application provides a simple API which allows uses to upload modified predictions for future retraining. Currently the application only stores the uploaded data into a postgres database and doesn't automatically re-train the model. This needs to happen manually by the app developer. This application will optimally be deployed to some cloud provider (e.g. AWS EC2 or AWS ECS, etc.) and be accessible through the Internet. For testing purposes, however, the back-end application needs to be started from XCode ((i) open the Package.swift file, (ii) wait until all vapor libraries are downloaded, (iii) ensure postgresql is running, e.g. by installing docker and running the following command which will require Internet to download the postgresql image: `docker run --rm --name postgres -e POSTGRES_DB=vapor_database -e POSTGRES_USER=vapor_username -e POSTGRES_PASSWORD=vapor_password -p 5432:5432 -d postgres`, then (iv) Build & Run the project with target 'My Mac'. Once the Debug Console indicates that it is ready to accept connections on localhost:8080 - 'Server starting on http://127.0.0.1:8080 ', the server is ready) and needs to be running during the iOS App is running. In that case the iOS app can use the `http://localhost:8080/api/tweets` to upload data to the database (POST request) or open the URL in browser to see what data is has already been uploaded and saved (GET request).
 
 ![Alt text](_imgs/preview.png "A Preview.")

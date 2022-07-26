@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dataController.load()
         
         let navigationController = window?.rootViewController as! UINavigationController
-        let mainViewController = navigationController.topViewController as! ViewController
+        let mainViewController = navigationController.topViewController as! MainViewController
         mainViewController.dataController = dataController
         
         return true
