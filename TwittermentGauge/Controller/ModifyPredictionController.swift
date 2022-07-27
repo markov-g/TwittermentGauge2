@@ -24,6 +24,7 @@ class ModifyPredictionController: UIViewController {
     @IBOutlet var neutralButton: UIButton!
     @IBOutlet weak var uploadBtn: UIBarButtonItem!
     @IBOutlet weak var saveBtn: UIBarButtonItem!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidAppear(_ animated: Bool) {
         posButton.isEnabled = false
@@ -31,11 +32,15 @@ class ModifyPredictionController: UIViewController {
         neutralButton.isEnabled = false
         saveBtn.isEnabled = false
         
+        activityIndicator.stopAnimating()
+        activityIndicator.hidesWhenStopped = true
+        
         tweetLabel.text = tweet.text
         labelLabel.text = label
     }
     
     @IBAction func upload(_ sender: UIBarButtonItem) {
+        activityIndicator.startAnimating()
         let params: Parameters = [
             "text": tweet.text!,
             "label": tweet.sentimentLabel!
@@ -50,6 +55,7 @@ class ModifyPredictionController: UIViewController {
         .validate(statusCode: 200 ..< 299)
         .responseData{
             (response) in
+            self.activityIndicator.stopAnimating()
             switch response.result {
                 case .success(let data):
                     self.showAlert(title: "Thanks!", message: "Thank you for taking the time to correct and share the sentiment clasification. Your input will be used to re-train and improve the classifier in the next version.")
